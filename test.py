@@ -1,6 +1,6 @@
 import math
 
-number = 611111
+number = 300425737531
 
 def is_prime(n):
     if n == 2:
