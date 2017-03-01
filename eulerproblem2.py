@@ -1,4 +1,6 @@
-# Fibonacci sequence: Each new term is the sum of it's previous two terms, starting with 1 and 2
+""" Fibonacci sequence: Each new term is the sum of it's previous two terms,
+    starting with 1 and 2
+"""
 
 fibonacci_sequence = [1, 2]
 next_term = 0
