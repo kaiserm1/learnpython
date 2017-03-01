@@ -1,13 +1,14 @@
 """ By listing the first six prime numbers: 2, 3, 5, 7, 11, and 13, we can see
     that the 6th prime is 13.
-
     What is the 10 001st prime number?
 """
 
 import math
 
 number = 300425737531
-final_prime = 6
+final_prime = 10001
+
+# 104729
 
 def is_prime(n):
     if n == 2:
@@ -27,15 +28,17 @@ def generate_primes(number_of_primes):
     # Generate prime numbers until number_of_primes is reached
     counter = 0
     num = 0
-    while True:
-        if counter <= number_of_primes:
-            if is_prime(num):
-                counter += 1
+    while counter < number_of_primes:
+        # print("vor code| num:", num, "counter:", counter)
+        if is_prime(num):
+            counter += 1
             num += 1
+            # print("true    | num:", num, "counter:", counter)
         else:
-            break
-    print(num, counter)
-    return counter
+            num += 1
+            # print("else    | num:", num, "counter:", counter)
+    num -= 1
+    return num
 
 
 print(generate_primes(final_prime))
