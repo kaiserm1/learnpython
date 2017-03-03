@@ -95,7 +95,7 @@ def calculate_greatest_product(sequence_input):
     pass
 
 
-def largest_product(grid_input, sequence_length):
+def largest_product_in_grid(grid_input, sequence_length):
     pass
 
 
