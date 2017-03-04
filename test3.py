@@ -1,7 +1,4 @@
-"""
-    Calculate the greatest product of 4 consecutive numbers in a 20x20 grid.
-    Directions of the 4 consecutive numbers are: up, down, right, left, diagonal.
-"""
+
 
 grid = [
     [8, 2, 22, 97, 38, 15, 0, 40, 0, 75, 4, 5, 7, 78, 52, 12, 50, 77, 91, 8],
@@ -51,28 +48,28 @@ def diagonals_list(grid_input):
     # Generate list containing all diagonals in grid
 
     # Generate first half of list.
-    first_coordinate_list_l2r = []
+    first_coordinate_list = []
     size = len(grid_input[0]) - 3
     for i in range(0, size):
-        first_coordinate_list_l2r.append(i)
+        first_coordinate_list.append(i)
     
     # Reverse first half of list to get 19 down to 0.
-    first_coordinate_list_l2r = first_coordinate_list_l2r[::-1]
+    first_coordinate_list = first_coordinate_list[::-1]
     
     # Add second half of list made from 18 0s.
-    [first_coordinate_list_l2r.append(0) for i in range(0, size-1)]
+    [first_coordinate_list.append(0) for i in range(0, size-1)]
     
-    # Take first_coordinate_list_l2r and reverse it to get second_coordinate_list_l2r.
-    second_coordinate_list_l2r = []
-    second_coordinate_list_l2r = first_coordinate_list_l2r[::-1]
+    # Take first_coordinate_list and reverse it to get second_coordinate_list.
+    second_coordinate_list = []
+    second_coordinate_list = first_coordinate_list[::-1]
     
     # Create start coordinates for diagonals from left to right (l2r).
     start_coordinates_l2r = []
-    for i in range(0, len(first_coordinate_list_l2r)):
-        start_coordinates_l2r.append([first_coordinate_list_l2r[i], second_coordinate_list_l2r[i]])
+    for i in range(0, len(first_coordinate_list)):
+        start_coordinates_l2r.append([first_coordinate_list[i], second_coordinate_list[i]])
         
     # Create coordinates for diagonals starting from start_coordinates_l2r.
-    diagonals_l2r = []
+    diagonals = []
     for coords in start_coordinates_l2r:
         # Start with left side start coordinates (16, 0) up to (1, 0).
         diagonals_helper = []
@@ -84,19 +81,8 @@ def diagonals_list(grid_input):
             for i in range(coords[0], 20 - coords[1]):
                 diagonals_helper.append([coords[0] + i, coords[1] + i])
         # All diagonals from left to right with at least 4 consecutive numbers.        
-        diagonals_l2r.append(diagonals_helper)
+        diagonals.append(diagonals_helper)
         
-    return diagonals_l2r
+    return diagonals
     
-    
-    
-
-def create_sequences(lines_from_grids):
-    pass
-
-
-def largest_product_in_grid(grid_input, sequence_length):
-    pass
-
-
 print(diagonals_list(grid))
