@@ -55,22 +55,22 @@ def diagonals_list(grid_input):
     size = len(grid_input[0]) - 3
     for i in range(0, size):
         first_coordinate_list_l2r.append(i)
-    
+
     # Reverse first half of list to get 19 down to 0.
     first_coordinate_list_l2r = first_coordinate_list_l2r[::-1]
-    
+
     # Add second half of list made from 18 0s.
     [first_coordinate_list_l2r.append(0) for i in range(0, size-1)]
-    
+
     # Take first_coordinate_list_l2r and reverse it to get second_coordinate_list_l2r.
     second_coordinate_list_l2r = []
     second_coordinate_list_l2r = first_coordinate_list_l2r[::-1]
-    
+
     # Create start coordinates for diagonals from left to right (l2r).
     start_coordinates_l2r = []
     for i in range(0, len(first_coordinate_list_l2r)):
         start_coordinates_l2r.append([first_coordinate_list_l2r[i], second_coordinate_list_l2r[i]])
-        
+
     # Create coordinates for diagonals starting from start_coordinates_l2r.
     diagonals_l2r = []
     for coords in start_coordinates_l2r:
@@ -83,13 +83,13 @@ def diagonals_list(grid_input):
         else:
             for i in range(coords[0], 20 - coords[1]):
                 diagonals_helper.append([coords[0] + i, coords[1] + i])
-        # All diagonals from left to right with at least 4 consecutive numbers.        
+        # All diagonals from left to right with at least 4 consecutive numbers.
         diagonals_l2r.append(diagonals_helper)
-        
+
     return diagonals_l2r
-    
-    
-    
+
+
+
 
 def create_sequences(lines_from_grids):
     pass
