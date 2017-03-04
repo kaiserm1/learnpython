@@ -46,8 +46,6 @@ def rows_list(grid_input):
 
 def diagonals_list(grid_input):
     # Generate list containing all diagonals in grid
-    
-    # --- Diagonals from left to right start:
 
     # Generate first half of list.
     first_coordinate_list = []
@@ -71,16 +69,20 @@ def diagonals_list(grid_input):
         start_coordinates_l2r.append([first_coordinate_list[i], second_coordinate_list[i]])
         
     # Create coordinates for diagonals starting from start_coordinates_l2r.
-    diagonals_helper = [[start_coordinates_l2r[0][0], start_coordinates_l2r[0][1]]]
-    size_2 = 19
-    for coord in start_coordinates_l2r:
-        pass #while coord[1] < 19:
-    
-    
-    """ 
-        for i in range(coord[0], size_2):
-            diagonals_helper.append([coord[0]+1, coord[1]+1])
-    """
-    return start_coordinates_l2r
+    diagonals = []
+    for coords in start_coordinates_l2r:
+        # Start with left side start coordinates (16, 0) up to (1, 0).
+        diagonals_helper = []
+        if coords[0] > 0:
+            for i in range(0, 20 - coords[0]):
+                diagonals_helper.append([coords[0] + i, coords[1] + i])
+        # Continue with top side start coordinates (0, 0) tup to (0, 16).
+        else:
+            for i in range(coords[0], 20 - coords[1]):
+                diagonals_helper.append([coords[0] + i, coords[1] + i])
+        # All diagonals from left to right with at least 4 consecutive numbers.        
+        diagonals.append(diagonals_helper)
+        
+    return diagonals
     
 print(diagonals_list(grid))
