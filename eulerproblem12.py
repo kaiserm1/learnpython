@@ -20,23 +20,38 @@
     divisors?
 """
 
-# while number of divisors <= target:
-#     generate triangle numbers going up with summands and
-#     check number of divisors
 
-target = 4
-number_of_divisors = 0
-counter = 1
-triangle_number = 1
-divisor_list = []
-while number_of_divisors <= target:
-#    for i in range(1, counter):
-#        triangle_number += i
-    counter += 1
-    for i in range(1, int(triangle_number / 2)):
-        if triangle_number % i == 0:
-            divisor_list.append(i)
-    number_of_divisors = len(divisor_list)
-    triangle_number += counter
-
-print(triangle_number)
+import time
+ 
+def num_divisors(n):
+    if n % 2 == 0: n = n/2
+    divisors = 1
+    count = 0
+    while n % 2 == 0:
+        count += 1
+        n = n/2
+    divisors = divisors * (count + 1)
+    p = 3
+    while n != 1:
+        count = 0
+        while n % p == 0:
+            count += 1
+            n = n/p
+        divisors = divisors * (count + 1)
+        p += 2
+    return divisors
+ 
+def find_triangular_index(factor_limit):
+    n = 1
+    lnum, rnum = num_divisors(n), num_divisors(n+1)
+    while lnum * rnum < 500:
+        n += 1
+        lnum, rnum = rnum, num_divisors(n+1)
+    return n
+ 
+start = time.time()
+index = find_triangular_index(500)
+triangle = (index * (index + 1)) / 2
+elapsed = (time.time() - start)
+ 
+print("result %s returned in %s seconds." % (triangle,elapsed))
