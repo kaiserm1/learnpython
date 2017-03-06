@@ -26,25 +26,50 @@ grid = [
     [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ]
 
+# There are 20 rows, each containing 20 integers.
+max_prod = 0
 
+for i in range(20):
+    for j in range(16):
+        # Products going right/left.
+        prod = grid[i][j] * grid[i][j + 1] * grid[i][j + 2] * grid[i][j + 3]
+        if prod > max_prod: max_prod = prod
+        # Products going up/down.
+        prod = grid[j][i] * grid[j + 1][i] * grid[j + 2][i] * grid[j + 3][i]
+        if prod > max_prod: max_prod = prod
+
+# Products in the diagonals
+for i in range(16):
+    for j in range(16):
+        prod = grid[i][j] * grid[i + 1][j + 1] * grid[i + 2][j + 2] * \
+        grid[i + 3][j + 3]
+        if prod > max_prod: max_prod = prod
+for i in range(3, 20):
+    for j in range(16):
+        prod = grid[i][j] * grid[i - 1][j + 1] * grid[i - 2][j + 2] * \
+        grid[i - 3][j + 3]
+        if prod > max_prod: max_prod = prod
+
+print(max_prod)
+"""
 def columns_list(grid_input):
-    column = []
+    column_values = []
     for i in range(0, 20):
         single_column = []
         for j in range(0, 20):
             single_column.append(grid_input[j][i])
-        column.append(single_column)
-    return column
+        column_values.append(single_column)
+    return column_values
 
 
 def rows_list(grid_input):
-    row = []
+    row_values = []
     for i in range(0, 20):
         single_row = []
         for j in range(0, 20):
             single_row.append(grid_input[i][j])
-        row.append(single_row)
-    return row
+        row_values.append(single_row)
+    return row_values
 
 
 def diagonals_list(grid_input):
@@ -86,17 +111,47 @@ def diagonals_list(grid_input):
         # All diagonals from left to right with at least 4 consecutive numbers.
         diagonals_l2r.append(diagonals_helper)
 
-    return diagonals_l2r
+    # Generate list with values for all coordinates in diagonals-l2r
+    diagonals_values = []
+    for list_of_coordinates in diagonals_l2r:
+        list_of_coordinates_values = []
+        for coordinates in list_of_coordinates:
+            x = coordinates[0]
+            y = coordinates[1]
+            list_of_coordinates_values.append(grid_input[x][y])
+        diagonals_values.append(list_of_coordinates_values)
+
+    return diagonals_values
 
 
-
-
-def create_sequences(lines_from_grids):
-    pass
+def prod(a_list):
+    product = 1
+    for each in a_list:
+        product *= each
+    return product
 
 
 def largest_product_in_grid(grid_input, sequence_length):
-    pass
+    prods_list_all = []
+    for value_list in diagonals_list(grid_input):
+        prods_list = []
+        for i in range(len(value_list) - sequence_length + 1):
+            prods_list.append(prod(value_list[i:i + sequence_length]))
+        prods_list_all += prods_list
 
+    for value_list in columns_list(grid_input):
+        prods_list = []
+        for i in range(len(value_list) - sequence_length + 1):
+            prods_list.append(prod(value_list[i:i + sequence_length]))
+        prods_list_all += prods_list
 
-print(diagonals_list(grid))
+    for value_list in rows_list(grid_input):
+        prods_list = []
+        for i in range(len(value_list) - sequence_length + 1):
+            prods_list.append(prod(value_list[i:i + sequence_length]))
+        prods_list_all += prods_list
+
+    return max(prods_list_all)
+
+print(largest_product_in_grid(grid, 4))
+"""
