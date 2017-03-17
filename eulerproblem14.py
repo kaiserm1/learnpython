@@ -20,7 +20,7 @@
     NOTE: Once the chain starts the terms are allowed to go above one million.
 """
 
-cache_dict = {1:1}
+cache_dict = {1: 1}
 
 
 def collatz_longest_chain(limit=1000000):

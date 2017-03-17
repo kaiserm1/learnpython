@@ -20,10 +20,11 @@ def translate_number(number):
     """
 
     number_in_words_dict = {
-        '1': 'one', '2': 'two', '3': 'three', '4': 'four', '5': 'five', '6': 'six', '7': 'seven', '8': 'eight', '9': 'nine', '10': 'ten',
-        '11': 'eleven', '12': 'twelve', '13': 'thirteen', '14': 'fourteen', '15': 'fifteen', '16': 'sixteen', '17': 'seventeen',
-        '18': 'eighteen', '19': 'nineteen', '20': 'twenty', '30': 'thirty', '40': 'forty', '50': 'fifty', '60': 'sixty',
-        '70': 'seventy', '80': 'eighty', '90': 'ninety', '1000': 'onethousand'
+        '1': 'one', '2': 'two', '3': 'three', '4': 'four', '5': 'five', '6': 'six', '7': 'seven', '8': 'eight',
+        '9': 'nine', '10': 'ten', '11': 'eleven', '12': 'twelve', '13': 'thirteen', '14': 'fourteen', '15': 'fifteen',
+        '16': 'sixteen', '17': 'seventeen', '18': 'eighteen', '19': 'nineteen', '20': 'twenty', '30': 'thirty',
+        '40': 'forty', '50': 'fifty', '60': 'sixty', '70': 'seventy', '80': 'eighty', '90': 'ninety',
+        '1000': 'onethousand'
     }
     str_number = str(number)
     str_length = len(str_number)
@@ -32,19 +33,26 @@ def translate_number(number):
         written_out_number = number_in_words_dict.get(str_number)
     else:
         if str_length == 2:
-            written_out_number = '{}{}'.format(number_in_words_dict.get(str_number[0] + '0'), number_in_words_dict.get(str_number[1]))
+            written_out_number = '{}{}'.format(number_in_words_dict.get(str_number[0] + '0'),
+                                               number_in_words_dict.get(str_number[1]))
         elif str_length == 3:
             if str_number[1:] == '00':
                 written_out_number = '{}hundred'.format(number_in_words_dict.get(str_number[0]))
             elif str_number[1] == '0':
-                written_out_number = '{}hundredand{}'.format(number_in_words_dict.get(str_number[0]), number_in_words_dict.get(str_number[2]))
+                written_out_number = '{}hundredand{}'.format(number_in_words_dict.get(str_number[0]),
+                                                             number_in_words_dict.get(str_number[2]))
             elif str_number[2] == '0':
-                written_out_number = '{}hundredand{}'.format(number_in_words_dict.get(str_number[0]), number_in_words_dict.get(str_number[1] + str_number[2]))
+                written_out_number = '{}hundredand{}'.format(number_in_words_dict.get(str_number[0]),
+                                                             number_in_words_dict.get(str_number[1] + str_number[2]))
             elif str_number[1] == '1':
-                written_out_number = '{}hundredand{}'.format(number_in_words_dict.get(str_number[0]), number_in_words_dict.get(str_number[1:]))
+                written_out_number = '{}hundredand{}'.format(number_in_words_dict.get(str_number[0]),
+                                                             number_in_words_dict.get(str_number[1:]))
             else:
-                written_out_number = '{}hundredand{}{}'.format(number_in_words_dict.get(str_number[0]), number_in_words_dict.get(str_number[1]+'0'), number_in_words_dict.get(str_number[2]))
+                written_out_number = '{}hundredand{}{}'.format(number_in_words_dict.get(str_number[0]),
+                                                               number_in_words_dict.get(str_number[1] + '0'),
+                                                               number_in_words_dict.get(str_number[2]))
     return written_out_number
+
 
 number_of_characters = 0
 for number in range(1, 1001):

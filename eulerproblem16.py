@@ -3,7 +3,7 @@
 
     What is the sum of the digits of the number 2^1000?
 """
-num = 2**1000
+num = 2 ** 1000
 str_num = str(num)
 num_sum = 0
 for digit in str_num:
