@@ -17,5 +17,5 @@ def prime_factors(n):
 
 
 pfs = prime_factors(number)
-largest_prime_factor = max(pfs) # The largest element in the prime factor list
+largest_prime_factor = max(pfs)  # The largest element in the prime factor list
 print(largest_prime_factor)

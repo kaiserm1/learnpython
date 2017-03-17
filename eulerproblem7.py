@@ -8,6 +8,7 @@ import math
 number = 300425737531
 final_prime = 10001
 
+
 # 104729
 
 def is_prime(n):

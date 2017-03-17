@@ -11,12 +11,14 @@
 
 target = 1000
 
+
 def pyt_triplet(num):
     for i in range(1, num, 1):
         for j in range(1, num - 1, 1):
             k = num - i - j
-            if i**2 + j**2 == k**2:
+            if i ** 2 + j ** 2 == k ** 2:
                 return i * j * k
     return 0
+
 
 print(pyt_triplet(target))

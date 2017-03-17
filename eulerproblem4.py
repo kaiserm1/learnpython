@@ -22,7 +22,7 @@ def palindrome_factors(num1, num2):
 
 def create_num_list(range_start, range_end):
     num_list = []
-    for i in range(range_start, range_end+1):
+    for i in range(range_start, range_end + 1):
         num_list.append(i)
     return num_list
 

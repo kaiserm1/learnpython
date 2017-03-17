@@ -30,20 +30,20 @@ max_prod = 0
 for i in range(20):
     for j in range(16):
         # right/left products
-        prod = M[i][j]*M[i][j+1]*M[i][j+2]*M[i][j+3]
+        prod = M[i][j] * M[i][j + 1] * M[i][j + 2] * M[i][j + 3]
         if prod > max_prod: max_prod = prod
         # up/down products
-        prod = M[j][i]*M[j+1][i]*M[j+2][i]*M[j+3][i]
+        prod = M[j][i] * M[j + 1][i] * M[j + 2][i] * M[j + 3][i]
         if prod > max_prod: max_prod = prod
 
 # diagonal products
 for i in range(16):
     for j in range(16):
-        prod = M[i][j]*M[i+1][j+1]*M[i+2][j+2]*M[i+3][j+3]
+        prod = M[i][j] * M[i + 1][j + 1] * M[i + 2][j + 2] * M[i + 3][j + 3]
         if prod > max_prod: max_prod = prod
-for i in range(3,20):
+for i in range(3, 20):
     for j in range(16):
-        prod = M[i][j]*M[i-1][j+1]*M[i-2][j+2]*M[i-3][j+3]
+        prod = M[i][j] * M[i - 1][j + 1] * M[i - 2][j + 2] * M[i - 3][j + 3]
         if prod > max_prod: max_prod = prod
 
 print(max_prod)

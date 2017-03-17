@@ -42,12 +42,12 @@ for i in range(20):
 for i in range(16):
     for j in range(16):
         prod = grid[i][j] * grid[i + 1][j + 1] * grid[i + 2][j + 2] * \
-        grid[i + 3][j + 3]
+               grid[i + 3][j + 3]
         if prod > max_prod: max_prod = prod
 for i in range(3, 20):
     for j in range(16):
         prod = grid[i][j] * grid[i - 1][j + 1] * grid[i - 2][j + 2] * \
-        grid[i - 3][j + 3]
+               grid[i - 3][j + 3]
         if prod > max_prod: max_prod = prod
 
 print(max_prod)
